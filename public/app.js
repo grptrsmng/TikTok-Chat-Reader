@@ -109,7 +109,7 @@ function addGiftItem(data) {
         container.find('div').slice(0, 100).remove();
     }
 
-    let streakId = data.userId.toString() + '_' + data.giftId;
+    let streakId = data.username.toString() + '_' + data.giftId;
 
     let html = `
         <div data-streakid=${isPendingStreak(data) ? streakId : ''}>
@@ -155,7 +155,7 @@ connection.on('roomUser', (msg) => {
     }
 })
 
-// like stats
+/* like stats
 connection.on('like', (msg) => {
     if (typeof msg.totalLikeCount === 'number') {
         likeCount = msg.totalLikeCount;
@@ -169,7 +169,7 @@ connection.on('like', (msg) => {
     }
 })
 
-// Member join
+/ Member join
 let joinMsgDelay = 0;
 connection.on('member', (msg) => {
     if (window.settings.showJoins === "0") return;
@@ -184,7 +184,7 @@ connection.on('member', (msg) => {
         joinMsgDelay -= addDelay;
         addChatItem('#21b2c2', msg, 'joined', true);
     }, joinMsgDelay);
-})
+})*/
 
 // New chat comment received
 connection.on('chat', (msg) => {
@@ -205,13 +205,13 @@ connection.on('gift', (data) => {
     addGiftItem(data);
 })
 
-// share, follow
+/* share, follow
 connection.on('social', (data) => {
     if (window.settings.showFollows === "0") return;
 
     let color = data.displayType.includes('follow') ? '#ff005e' : '#2fb816';
     addChatItem(color, data, data.label.replace('{0:user}', ''));
-})
+})*/
 
 connection.on('streamEnd', () => {
     $('#stateText').text('Stream ended.');
