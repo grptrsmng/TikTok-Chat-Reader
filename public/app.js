@@ -64,7 +64,7 @@ function updateRoomStats() {
 }
 
 function generateUsernameLink(data) {
-    return `<a class="usernamelink" href="https://www.tiktok.com/@${data.uniqueId}" target="_blank">${data.uniqueId}</a>`;
+    return `<a class="usernamelink" href="https://www.tiktok.com/@${data.uniqueId}" target="_blank">${data.nickname}</a>`;
 }
 
 function isPendingStreak(data) {
@@ -95,7 +95,7 @@ function addChatItem(color, data, text, summarize) {
 
     container.stop();
     container.animate({
-        scrollTop: container[0].scrollHeight
+        scrollDown: container[0].scrollHeight
     }, 400);
 }
 
@@ -109,7 +109,7 @@ function addGiftItem(data) {
         container.find('div').slice(0, 100).remove();
     }
 
-    let streakId = data.username.toString() + '_' + data.giftId;
+    let streakId = data.userId.toString() + '_' + data.giftId;
 
     let html = `
         <div data-streakid=${isPendingStreak(data) ? streakId : ''}>
@@ -142,7 +142,7 @@ function addGiftItem(data) {
 
     container.stop();
     container.animate({
-        scrollTop: container[0].scrollHeight
+        scrollDown: container[0].scrollHeight
     }, 800);
 }
 
